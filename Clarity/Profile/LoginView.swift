@@ -7,8 +7,8 @@
 
 
 import SwiftUI
-import GoogleSignIn
-import GoogleSignInSwift
+//import GoogleSignIn
+//import GoogleSignInSwift
 
 struct LoginView: View {
     @EnvironmentObject var authManager: AuthManager
