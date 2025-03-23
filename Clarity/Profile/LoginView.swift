@@ -7,8 +7,8 @@
 
 
 import SwiftUI
-//import GoogleSignIn
-//import GoogleSignInSwift
+import GoogleSignIn
+import GoogleSignInSwift
 
 struct LoginView: View {
     @EnvironmentObject var authManager: AuthManager
@@ -45,21 +45,43 @@ struct LoginView: View {
             .padding()
         }
     }
-
     func handleGoogleSignIn() {
-        guard let clientID = Bundle.main.object(forInfoDictionaryKey: "GIDClientID") as? String else {
-            print("Missing GIDClientID in Info.plist")
+        // Load GIDClientID from credentials.plist instead of Info.plist
+        guard let path = Bundle.main.path(forResource: "credentials", ofType: "plist"),
+              let dict = NSDictionary(contentsOfFile: path),
+              let clientID = dict["GIDClientID"] as? String else {
+            print("[ERROR] Failed to load GIDClientID from credentials.plist")
             return
         }
 
+        // Use the loaded GIDClientID
         let config = GIDConfiguration(clientID: clientID)
-        GIDSignIn.sharedInstance.signIn(with: config, presenting: UIApplication.shared.windows.first?.rootViewController!) { user, error in
+        GIDSignIn.sharedInstance.signIn(withPresenting: UIApplication.shared.windows.first!.rootViewController!) { result, error in
+            if let error = error {
+                print("Google Sign-In failed: \(error)")
+                return
+            }
+
+            guard let user = result?.user else {
+                print("Google Sign-In: No user information found.")
+                return
+            }
+
+            authManager.isAuthenticated = true
+            print("Google Sign-In succeeded: \(user.profile?.name ?? "No Name")")
+
             if let error = error {
                 print("Google Sign-In failed: \(error)")
             } else {
                 authManager.isAuthenticated = true
-                print("Google Sign-In succeeded: \(user?.profile?.name ?? "No Name")")
+                if let profile = user.profile {
+                    print("Google Sign-In succeeded: \(profile.name ?? "No Name")")
+                } else {
+                    print("Google Sign-In succeeded, but no profile information found.")
+                }
             }
         }
     }
+
+
 }

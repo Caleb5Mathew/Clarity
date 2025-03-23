@@ -1,31 +1,25 @@
-//
-//  AppDelegate.swift
-//  Clarity
-//
-//  Created by Caleb Matthews  on 12/27/24.
-//
-
 import UIKit
 import GoogleSignIn
+import ObjectiveC.runtime
 
-@main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    func application(
-        _ application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
-    ) -> Bool {
-        // Initialize Google Sign-In
-        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
-            if let error = error {
-                print("Error restoring previous Google Sign-In: \(error)")
-            } else {
-                print("Successfully restored previous Google Sign-In")
-            }
-        }
-        return true
-    }
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        if let path = Bundle.main.path(forResource: "credentials", ofType: "plist"),
+           let dict = NSDictionary(contentsOfFile: path),
+           let clientID = dict["GIDClientID"] as? String,
+           let reversedClientID = dict["REVERSED_CLIENT_ID"] as? String {
+            print("[DEBUG] Loaded and Set GIDClientID: \(clientID)")
+            print("[DEBUG] Loaded REVERSED_CLIENT_ID: \(reversedClientID)")
 
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return GIDSignIn.sharedInstance.handle(url)
+            // Inject URL scheme via swizzling
+            Bundle.swizzleURLTypes()
+            
+            // Initialize Google Sign-In
+            GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: clientID)
+        } else {
+            print("[ERROR] Failed to load GIDClientID from credentials.plist")
+        }
+
+        return true
     }
 }

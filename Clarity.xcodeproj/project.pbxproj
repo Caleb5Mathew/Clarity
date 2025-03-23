@@ -28,8 +28,11 @@
 		24A5C4302D1FA0F500F2416A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A5C42F2D1FA0F400F2416A /* LoginView.swift */; };
 		24A5C4322D1FA18100F2416A /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A5C4312D1FA18100F2416A /* AuthManager.swift */; };
 		24A5C4342D1FA9A900F2416A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A5C4332D1FA9A900F2416A /* AppDelegate.swift */; };
-		24A5C4362D1FB4DE00F2416A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24A5C4352D1FB4DE00F2416A /* Info.plist */; };
 		24A5C4382D1FB51E00F2416A /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24A5C4372D1FB51E00F2416A /* credentials.plist */; };
+		E7D09AB32D83B02A00DA5300 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D09AB22D83B02600DA5300 /* HomePageView.swift */; };
+		E7D7EBB52D66F43300AFC400 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = E7D7EBB42D66F43300AFC400 /* GoogleSignIn */; };
+		E7D7EBB72D66F43300AFC400 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E7D7EBB62D66F43300AFC400 /* GoogleSignInSwift */; };
+		E7D7EBB92D6701E200AFC400 /* swizz.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D7EBB82D6701DE00AFC400 /* swizz.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,8 +77,9 @@
 		24A5C42F2D1FA0F400F2416A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		24A5C4312D1FA18100F2416A /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		24A5C4332D1FA9A900F2416A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		24A5C4352D1FB4DE00F2416A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24A5C4372D1FB51E00F2416A /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
+		E7D09AB22D83B02600DA5300 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
+		E7D7EBB82D6701DE00AFC400 /* swizz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swizz.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7D7EBB52D66F43300AFC400 /* GoogleSignIn in Frameworks */,
+				E7D7EBB72D66F43300AFC400 /* GoogleSignInSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,10 +133,10 @@
 			isa = PBXGroup;
 			children = (
 				24A5C3DF2D177F6000F2416A /* ClarityApp.swift */,
-				24A5C4352D1FB4DE00F2416A /* Info.plist */,
 				24A5C4372D1FB51E00F2416A /* credentials.plist */,
 				24A5C4312D1FA18100F2416A /* AuthManager.swift */,
 				24A5C41B2D191CAB00F2416A /* OnboardingView.swift */,
+				E7D09AB22D83B02600DA5300 /* HomePageView.swift */,
 				24A5C42C2D1FA0D500F2416A /* Profile */,
 				24A5C3E12D177F6000F2416A /* ContentView.swift */,
 				24A5C42B2D1F99CC00F2416A /* TherapyChat */,
@@ -194,6 +200,7 @@
 			children = (
 				24A5C42D2D1FA0E500F2416A /* RootView.swift */,
 				24A5C4332D1FA9A900F2416A /* AppDelegate.swift */,
+				E7D7EBB82D6701DE00AFC400 /* swizz.swift */,
 				24A5C42F2D1FA0F400F2416A /* LoginView.swift */,
 			);
 			path = Profile;
@@ -309,7 +316,6 @@
 				24A5C3E72D177F6300F2416A /* Preview Assets.xcassets in Resources */,
 				24A5C4382D1FB51E00F2416A /* credentials.plist in Resources */,
 				24A5C3E42D177F6300F2416A /* Assets.xcassets in Resources */,
-				24A5C4362D1FB4DE00F2416A /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,9 +352,11 @@
 				24A5C3E22D177F6000F2416A /* ContentView.swift in Sources */,
 				24A5C4302D1FA0F500F2416A /* LoginView.swift in Sources */,
 				24A5C4202D1BB0F500F2416A /* Therapist.swift in Sources */,
+				E7D7EBB92D6701E200AFC400 /* swizz.swift in Sources */,
 				24A5C42E2D1FA0E500F2416A /* RootView.swift in Sources */,
 				24A5C41C2D191CAB00F2416A /* OnboardingView.swift in Sources */,
 				24A5C3E02D177F6000F2416A /* ClarityApp.swift in Sources */,
+				E7D09AB32D83B02A00DA5300 /* HomePageView.swift in Sources */,
 				24A5C4102D17818200F2416A /* ColorExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -685,6 +693,19 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E7D7EBB42D66F43300AFC400 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 24A5C4392D1FBEC800F2416A /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		E7D7EBB62D66F43300AFC400 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 24A5C4392D1FBEC800F2416A /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 24A5C3D42D177F6000F2416A /* Project object */;
 }
